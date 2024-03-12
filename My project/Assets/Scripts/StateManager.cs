@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
+    public GameObject playerRef;
     public State currentState;
     void Update()
     {
@@ -11,7 +12,7 @@ public class StateManager : MonoBehaviour
     }
 
     private void RunStateMachine() {
-        State nextState = currentState?.RunCurrentState();
+        State nextState = currentState?.RunCurrentState(playerRef);
         if (nextState != null) {
             SwitchToNextState(nextState);
         }

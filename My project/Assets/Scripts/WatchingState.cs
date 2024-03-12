@@ -7,7 +7,7 @@ public class WatchingState : State
     public ChaseState chaseState;
     public bool canSeePlayer;
 
-    public override State RunCurrentState()
+    public override State RunCurrentState(GameObject _PlayerRef)
     {
         if (canSeePlayer)
         {

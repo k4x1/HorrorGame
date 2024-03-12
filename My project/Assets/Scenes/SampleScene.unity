@@ -108,8 +108,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 60
+    agentClimb: 1.88
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 0161150f333467a48ac51146f6cc691a, type: 2}
 --- !u!1 &3468621
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   watchingState: {fileID: 479054583}
   playerEscaped: 0
+  agent: {fileID: 855092974}
 --- !u!4 &653366563
 Transform:
   m_ObjectHideFlags: 0
@@ -830,6 +831,7 @@ GameObject:
   - component: {fileID: 855092971}
   - component: {fileID: 855092972}
   - component: {fileID: 855092973}
+  - component: {fileID: 855092974}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -961,7 +963,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac0ce60e25b7724e98230a1b1ade06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 59958036}
   currentState: {fileID: 653366562}
+--- !u!195 &855092974
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855092965}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.50000024
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.000002
+  m_BaseOffset: 1.000001
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!64 &892352024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2011,7 +2036,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &4494694943610348514
 GameObject:
@@ -2030,7 +2055,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &4665000262558289621
 MeshFilter:
@@ -2220,7 +2245,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &8544783546602207030
 MeshRenderer:
@@ -2281,8 +2306,8 @@ GameObject:
   m_Name: NurbsPath.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &8820161588351892994
 MeshFilter:
