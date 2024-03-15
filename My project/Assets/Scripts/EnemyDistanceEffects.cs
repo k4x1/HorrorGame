@@ -26,8 +26,8 @@ public class EnemyDistanceEffects : MonoBehaviour
         float distanceZnormal = (maxFogDistance - Mathf.Abs(distanceZ)) / (maxFogDistance - 0);
 
         float normalAvarage = (distanceXnormal + distanceZnormal)/2 ;
-        Debug.Log(normalAvarage);
-        RenderSettings.fogColor = new Color(normalAvarage/2,0,0);
+        
+        //RenderSettings.fogColor = new Color(normalAvarage/6, 0,0) ;
         RenderSettings.fogDensity = normalAvarage < 0.1f ? 0.1f : normalAvarage;
         camTv.thickDistort = normalAvarage*2.5f < 0.9f ? 0.9f : normalAvarage*2.5f;
         camTv.fineDistort = normalAvarage*5 < 2.5f ? 2.5f : normalAvarage*5;

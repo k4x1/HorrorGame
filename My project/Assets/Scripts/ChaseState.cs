@@ -11,6 +11,7 @@ public class ChaseState : State
     public override State RunCurrentState(GameObject _PlayerRef)
     {
         Vector3 playerPos = _PlayerRef.transform.position;
+        agent.stoppingDistance = 0;
         agent.SetDestination(playerPos);
         if (playerEscaped)
         {

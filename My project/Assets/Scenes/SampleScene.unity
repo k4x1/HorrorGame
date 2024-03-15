@@ -283,7 +283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59958036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.2, y: -26, z: 5.16}
+  m_LocalPosition: {x: 28.63, y: -26, z: 10.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -563,6 +563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseState: {fileID: 653366562}
   canSeePlayer: 0
+  maxDistance: 50
+  agent: {fileID: 855092974}
 --- !u!1 &491954154
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +849,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855092965}
   m_LocalRotation: {x: 0.003505974, y: -0.0018577168, z: -0.012549168, w: 0.9999134}
-  m_LocalPosition: {x: 0, y: -45.33, z: 9.15}
+  m_LocalPosition: {x: 1.52, y: -42.23, z: 17.23}
   m_LocalScale: {x: 2, y: 3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -964,7 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 59958036}
-  currentState: {fileID: 653366562}
+  currentState: {fileID: 479054583}
 --- !u!195 &855092974
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1734,7 +1736,7 @@ Transform:
   m_GameObject: {fileID: 919132147755543978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -58.4, y: -33.5, z: 21.7}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1956544782}
@@ -2223,7 +2225,7 @@ Transform:
   m_LocalRotation: {x: 0.50000006, y: 0.49999994, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 34.626503, y: -0.01645714, z: -59.433075}
   m_LocalScale: {x: -442.82175, y: -442.82175, z: -438.7575}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450651744286480}
   m_RootOrder: 5
