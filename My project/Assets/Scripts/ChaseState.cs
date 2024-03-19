@@ -7,7 +7,7 @@ public class ChaseState : State
 {
     public WatchingState watchingState;
     public bool playerEscaped;
-    public NavMeshAgent agent;
+
     public override State RunCurrentState(GameObject _PlayerRef)
     {
         Vector3 playerPos = _PlayerRef.transform.position;
@@ -15,6 +15,7 @@ public class ChaseState : State
         agent.SetDestination(playerPos);
         if (playerEscaped)
         {
+            playerEscaped = false;
             return watchingState;
         }
         else

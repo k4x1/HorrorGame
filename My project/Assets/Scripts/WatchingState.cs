@@ -14,12 +14,18 @@ public class WatchingState : State
 {
     public ChaseState chaseState;
     public bool canSeePlayer;
+    public DissapearState dissapearState;
+    public bool playerLookedAt;
     [SerializeField] private int maxDistance = 100;
-    public NavMeshAgent agent;
+    public StateManager stateManager;
+
+    
+
+  
 
     public override State RunCurrentState(GameObject _PlayerRef)
     {
-
+        dissapearState.NotInView = false;
         /*V3nD[] hitArr = new V3nD[8];
         int iter = 0;
         for (int i = -1; i < 2; i++) {
@@ -58,15 +64,22 @@ public class WatchingState : State
 
 
         agent.SetDestination(_PlayerRef.transform.position);
-        agent.stoppingDistance = maxDistance;   
+        agent.stoppingDistance = maxDistance;
 
-
+        if (stateManager.Viewing) {
+            playerLookedAt = true;
+        }
 
 
         ////exit
         if (canSeePlayer)
         {
+            canSeePlayer = false;
             return chaseState;
+
+        }
+        else if (playerLookedAt) {
+            return dissapearState;
         }
         else
         {

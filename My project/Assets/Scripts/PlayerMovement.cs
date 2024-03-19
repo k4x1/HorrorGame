@@ -32,7 +32,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float crouchSpeed = 3f;
 
+    public bool Loud = false;
 
+    public bool Quiet = false;
 
     private Vector3 moveDirection = Vector3.zero;
 
@@ -63,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
 
     {
-
+        
         Vector3 forward = transform.TransformDirection(Vector3.forward);
 
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -81,22 +83,13 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
 
+        Loud = isRunning;
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+       
 
-        {
+        moveDirection.y = movementDirectionY;
 
-            moveDirection.y = jumpPower;
-
-        }
-
-        else
-
-        {
-
-            moveDirection.y = movementDirectionY;
-
-        }
+        
 
 
 
@@ -120,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
             runSpeed = crouchSpeed;
 
-
+            Quiet = true;
 
         }
 
@@ -133,6 +126,8 @@ public class PlayerMovement : MonoBehaviour
             walkSpeed = 6f;
 
             runSpeed = 12f;
+
+            Quiet = false;
 
         }
 

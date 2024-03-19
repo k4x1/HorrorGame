@@ -10,6 +10,7 @@ public class EnemyDistanceEffects : MonoBehaviour
     [SerializeField] GameObject cameraRef;
     public float maxFogDistance = 10;
     BadTVEffect camTv;
+    public float redLessening = 20;
     void Start()
     {
         RenderSettings.fog = true;
@@ -26,9 +27,9 @@ public class EnemyDistanceEffects : MonoBehaviour
         float distanceZnormal = (maxFogDistance - Mathf.Abs(distanceZ)) / (maxFogDistance - 0);
 
         float normalAvarage = (distanceXnormal + distanceZnormal)/2 ;
-        
-        //RenderSettings.fogColor = new Color(normalAvarage/6, 0,0) ;
-        RenderSettings.fogDensity = normalAvarage < 0.1f ? 0.1f : normalAvarage;
+       // Debug.Log(normalAvarage);
+        RenderSettings.fogColor = new Color(normalAvarage/ redLessening, 0,0) ;
+       // RenderSettings.fogDensity = normalAvarage < 0.1f ? 0.1f : normalAvarage;
         camTv.thickDistort = normalAvarage*2.5f < 0.9f ? 0.9f : normalAvarage*2.5f;
         camTv.fineDistort = normalAvarage*5 < 2.5f ? 2.5f : normalAvarage*5;
         //transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, playerRef.transform.position, 1, 0.0f) );
