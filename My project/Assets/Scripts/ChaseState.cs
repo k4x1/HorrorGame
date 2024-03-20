@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ChaseState : State
 {
-    public WatchingState watchingState;
+    public ListenState lisenState;
     public bool playerEscaped;
 
     public override State RunCurrentState(GameObject _PlayerRef)
@@ -13,10 +13,11 @@ public class ChaseState : State
         Vector3 playerPos = _PlayerRef.transform.position;
         agent.stoppingDistance = 0;
         agent.SetDestination(playerPos);
+        playerEscaped = _PlayerRef.GetComponent<PlayerMovement>().hidding;
         if (playerEscaped)
         {
             playerEscaped = false;
-            return watchingState;
+            return lisenState;
         }
         else
         {

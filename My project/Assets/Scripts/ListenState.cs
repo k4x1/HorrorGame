@@ -13,6 +13,7 @@ public class ListenState : State
     [SerializeField] public float QuietDistance = 100;
     [SerializeField] public float ExtraQuietDistance = 10;
     public StateManager stateManager;
+    public GameObject[] pointList;
     public Vector3 point = Vector3.zero;
     private void OnDrawGizmos()
     {
@@ -23,13 +24,7 @@ public class ListenState : State
     {
         
         if (point == Vector3.zero) {
-            point = new Vector3(Random.Range(-146.25f, 123.33f), transform.position.y, Random.Range(-229.14f, 239.1f));
-            Ray ray = new Ray(point, Vector3.zero);
-            while (Physics.Raycast(ray, 0.01f)) { 
-                point = new Vector3(point.x++, point.y, point.z++);
-                Debug.Log(point);
-            }
-
+            point = pointList[Random.Range(0, pointList.Length)].transform.position;
         }
         agent.SetDestination(point);
         float distanceToPoint= Mathf.Abs(Vector3.Distance(point, transform.parent.transform.parent.transform.position));
@@ -37,8 +32,11 @@ public class ListenState : State
         if (distanceToPoint < 10) {
             point = Vector3.zero;
         }
-     /*   Vector3 playerPos = _PlayerRef.transform.position;
+        Vector3 playerPos = _PlayerRef.transform.position;
         float distance = Mathf.Abs(Vector3.Distance(playerPos, transform.position));
+        if (_PlayerRef.GetComponent<PlayerMovement>().hidding){
+            return this;
+        }
         if (distance < LoudDistance)
         {
             if (stateManager.playerMoveRef.Loud) {
@@ -55,7 +53,7 @@ public class ListenState : State
                return watchingState;
             }
 
-        }*/
+        }
         return this;
     }
 }

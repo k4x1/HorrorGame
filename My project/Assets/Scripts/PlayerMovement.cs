@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private CharacterController characterController;
 
-
+    public bool hidding = false;
 
     private bool canMove = true;
 
@@ -89,19 +89,37 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection.y = movementDirectionY;
 
-        
 
+        if (Input.GetKeyDown(KeyCode.E)){
+            if (!hidding)
+            {
+                int layerMask = 1 << 11;
+                Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+                RaycastHit hit = new RaycastHit();
+                if (Physics.Raycast(ray, out hit, 5, layerMask))
+                {
 
+                    hidding = true;
 
+                }
+            }
+            else 
+            {
+                hidding = false;
+            }
+
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        { }
+    
         if (!characterController.isGrounded)
-
         {
 
             moveDirection.y -= gravity * Time.deltaTime;
 
         }
 
-
+        
 
         if (Input.GetKey(KeyCode.LeftControl) && canMove)
 

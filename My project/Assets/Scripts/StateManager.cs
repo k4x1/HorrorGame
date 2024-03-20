@@ -20,7 +20,7 @@ public class StateManager : MonoBehaviour
     {
         Ray ray = new Ray(playerRef.transform.position, playerRef.transform.forward);
         RaycastHit hit = new RaycastHit();
-        Debug.DrawRay(playerRef.transform.position, playerRef.transform.forward * maxRayDistance, Color.red);
+        
         Viewing = Physics.Raycast(ray, out hit, maxRayDistance, layerMask);
         //if (Viewing) { Debug.Log(Viewing); }
         
