@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 5aefc79aac6874d41bbd434149c8c25b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Angelic Serif
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 21105087310123c45856cde85f2f39ed, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

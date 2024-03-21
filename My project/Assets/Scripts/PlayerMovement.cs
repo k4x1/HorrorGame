@@ -1,7 +1,7 @@
 using System.Collections;
 
 using System.Collections.Generic;
-
+using TMPro;
 using UnityEngine;
 
 
@@ -11,7 +11,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 
 {
-
+    public TextMeshPro Text;
     public Camera playerCamera;
 
     public float walkSpeed = 6f;
@@ -98,20 +98,19 @@ public class PlayerMovement : MonoBehaviour
                 RaycastHit hit = new RaycastHit();
                 if (Physics.Raycast(ray, out hit, 5, layerMask))
                 {
-
+                    canMove = false;
                     hidding = true;
 
                 }
             }
             else 
             {
+                canMove = true;
                 hidding = false;
             }
 
         }
-        if (Input.GetKeyUp(KeyCode.E))
-        { }
-    
+        
         if (!characterController.isGrounded)
         {
 
