@@ -11,8 +11,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 
 {
-    public TextMeshPro Text;
+    public GameObject textObj;
+
+    TextMeshProUGUI text;
+
     public Camera playerCamera;
+
+    bool StatueInFront = false;
+
+    ParticleManager LastStatueRef;
 
     public float walkSpeed = 6f;
 
@@ -30,7 +37,11 @@ public class PlayerMovement : MonoBehaviour
 
     public float crouchHeight = 1f;
 
+    public float hideHeight = 0.5f;
+
     public float crouchSpeed = 3f;
+
+    int layerMask = 1 << 11;
 
     public bool Loud = false;
 
@@ -57,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         Cursor.visible = false;
+
+        text = textObj.GetComponent<TextMeshProUGUI>();
 
     }
 
@@ -88,25 +101,40 @@ public class PlayerMovement : MonoBehaviour
        
 
         moveDirection.y = movementDirectionY;
-
-
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        RaycastHit hit = new RaycastHit();
+        if (!hidding) { 
+            
+            
+            StatueInFront = Physics.Raycast(ray, out hit, 5, layerMask);
+            if (StatueInFront) {
+                text.text = "Press E to pray";
+            }
+            else
+            {
+                text.text = "";
+            }
+        }
         if (Input.GetKeyDown(KeyCode.E)){
             if (!hidding)
             {
-                int layerMask = 1 << 11;
-                Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-                RaycastHit hit = new RaycastHit();
-                if (Physics.Raycast(ray, out hit, 5, layerMask))
+                if (StatueInFront)
                 {
+                   
+                    LastStatueRef = hit.transform.gameObject.GetComponent<ParticleManager>();
+                    hit.transform.gameObject.GetComponent<ParticleManager>().playing = true;
                     canMove = false;
                     hidding = true;
-
+                    characterController.height = hideHeight;
                 }
+
             }
             else 
             {
+                LastStatueRef.playing = false;
                 canMove = true;
                 hidding = false;
+                characterController.height = defaultHeight;
             }
 
         }
@@ -134,12 +162,12 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        else
+        else if(Input.GetKeyUp(KeyCode.LeftControl) && canMove)
 
         {
 
             characterController.height = defaultHeight;
-
+                
             walkSpeed = 6f;
 
             runSpeed = 12f;
@@ -154,9 +182,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (canMove)
-
-        {
+       
 
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
 
@@ -166,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
 
-        }
+        
 
     }
 
