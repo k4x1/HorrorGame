@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 public class DissapearState : State
 {
     public WatchingState watchingState;
+    public ListenState listenState;
     public bool NotInView = false;
     public GameObject eyes;
     public float eyeSpeed = 0;
@@ -29,7 +30,7 @@ public class DissapearState : State
             eyes.transform.position.y, eyes.transform.position.z + (perpendicular.y * Time.deltaTime * eyeSpeed));
         if (eyeSpeed > 10)
         {
-           transform.parent.transform.parent.transform.position = new Vector3(Random.Range(-146.25f, 123.33f), transform.position.y, Random.Range(-229.14f, 239.1f));
+           transform.parent.transform.parent.transform.position = new Vector3(Random.Range(-1000f, 1000f), transform.position.y, Random.Range(-1000, 1000));
             eyes.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             eyeSpeed = 0;
             NotInView = true;
@@ -38,7 +39,7 @@ public class DissapearState : State
             if (NotInView)
             {
                 eyes.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                return watchingState;
+                return listenState;
             }
             else
             {

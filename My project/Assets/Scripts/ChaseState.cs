@@ -17,7 +17,7 @@ public class ChaseState : State
         
         agent.stoppingDistance = 0;
         agent.SetDestination(playerPos);
-        agent.speed = 10;
+        agent.speed = 12;
         agent.acceleration= 5;
         playerEscaped = _PlayerRef.GetComponent<PlayerMovement>().hidding;
         EnemyEffects.RedOn = true;

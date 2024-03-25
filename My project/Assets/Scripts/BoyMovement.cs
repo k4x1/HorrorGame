@@ -38,7 +38,7 @@ public class BoyMovement : MonoBehaviour
 
             CurrentState = stateEnum.CAUGHT;
         }
-        else if (distanceToPlayer < 10)
+        else if (distanceToPlayer < 50)
         {
             CurrentState = stateEnum.RUNNING;
 

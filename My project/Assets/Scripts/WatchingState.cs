@@ -84,7 +84,7 @@ public class WatchingState : State
                 ran = 100;
             }
           
-            return ran<33 ? chaseState : dissapearState;
+            return ran<25 ? chaseState : dissapearState;
         }
         else
         {
