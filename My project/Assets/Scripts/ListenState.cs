@@ -15,11 +15,7 @@ public class ListenState : State
     public StateManager stateManager;
     public GameObject[] pointList;
     public Vector3 point = Vector3.zero;
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(point, 1);
-    }
+
     public override State RunCurrentState(GameObject _PlayerRef)
     {
         

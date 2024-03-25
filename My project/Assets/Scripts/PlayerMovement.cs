@@ -39,9 +39,13 @@ public class PlayerMovement : MonoBehaviour
 
     public float hideHeight = 0.5f;
 
+    public bool boyInFront = false;
+
     public float crouchSpeed = 3f;
 
     int layerMask = 1 << 11;
+
+    int layerMaskPlayer = 1 << 12;
 
     public bool Loud = false;
 
@@ -102,7 +106,9 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection.y = movementDirectionY;
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+       
         RaycastHit hit = new RaycastHit();
+         
         if (!hidding) { 
             
             

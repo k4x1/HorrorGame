@@ -79,7 +79,12 @@ public class WatchingState : State
 
         }
         else if (playerLookedAt) {
-            return dissapearState;
+            float ran = Random.Range(0,100);
+            if (_PlayerRef.GetComponent<PlayerMovement>().Loud) {
+                ran = 100;
+            }
+          
+            return ran<33 ? chaseState : dissapearState;
         }
         else
         {
