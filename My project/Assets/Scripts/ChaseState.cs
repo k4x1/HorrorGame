@@ -22,7 +22,8 @@ public class ChaseState : State
         playerEscaped = _PlayerRef.GetComponent<PlayerMovement>().hidding;
         EnemyEffects.RedOn = true;
         if (Vector3.Distance(playerPos, transform.position) < 3) {
-
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(2);
         }
         if (playerEscaped)

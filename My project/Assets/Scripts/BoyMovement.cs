@@ -71,8 +71,9 @@ public class BoyMovement : MonoBehaviour
                 }
                 break;
             case stateEnum.CAUGHT:
-                SceneManager.LoadScene(3);
-
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                SceneManager.LoadScene(3);    
                 break;
 
         };
